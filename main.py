@@ -1,5 +1,6 @@
 import httplib2 as http
 import json
+from collections import namedtuple
 
 try:
     from urlparse import urlparse
@@ -42,16 +43,19 @@ def putMetodo(endereco):
 def ConsultarPassagem():
     print('Consultando Passagens...')
     data = json.loads(getMetodo('/Passagens/todas'))
-    print(data)
+    for x in data['passagens']:
+        print('ID: ' + str(x['id']) + ' /De: ' + str(x['origem']) + ' /Para: ' + str(x['destino']) + ' /Data de Partida: ' + str(x['data']) + ' /Valor: ' + str(x['valor']) + ' /Acentos disponiveis: ' + str(x['poltronas']))
 
 def ConsultarHospedagem():
     print('Consultando Hoteis...')
     data = json.loads(getMetodo('/Hospedagem/todas'))
-    print(data)
+    for x in data['hospedagens']:
+        print('ID: ' + str(x['id']) + ' /Nome: ' + str(x['nomehotel']) + ' /Localizacao: ' + str(x['cidade']) + ' /Quartos Disponiveis: ' + str(x['quantidadequartos']) + ' /Pessoas por quarto: ' + str(x['numeromaxpessoas']))
 def ConsultarPacote():
     print('Consultando Pacotes...')
     data = json.loads(getMetodo('/Pacotes/todas'))
-    print(data)
+    for x in data['pacotes']:
+        print('ID: ' + str(x['id']) + ' /Passagem ID: ' + str(x['passagemID']) + ' /Hotel ID: ' + str(x['hotelID']) + ' /Valor: ' + str(x['valor']) + ' /Quantidade de Pessoas: ' + str(x['qantidadePessoas']))
 def ComprarPassagem():
     id = input('Digite o ID da passagem: ')
     quantidade = input('Digite a quantidade de poltronas')
