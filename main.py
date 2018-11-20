@@ -50,7 +50,7 @@ def ConsultarHospedagem():
     print('Consultando Hoteis...')
     data = json.loads(getMetodo('/Hospedagem/todas'))
     for x in data['hospedagens']:
-        print('ID: ' + str(x['id']) + ' /Nome: ' + str(x['nomehotel']) + ' /Localizacao: ' + str(x['cidade']) + ' /Quartos Disponiveis: ' + str(x['quantidadequartos']) + ' /Pessoas por quarto: ' + str(x['numeromaxpessoas']))
+        print('ID: ' + str(x['id']) + ' /Nome: ' + str(x['nomehotel']) + ' /Localizacao: ' + str(x['cidade']) + ' /Quartos Disponiveis: ' + str(x['quantidadequartos']) + ' /Pessoas por quarto: ' + str(x['numeromaxpessoas']) + ' /Valor: ' + str(x['valor']))
 def ConsultarPacote():
     print('Consultando Pacotes...')
     data = json.loads(getMetodo('/Pacotes/todas'))
